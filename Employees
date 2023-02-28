@@ -1,0 +1,47 @@
+!DOCTYPE html>
+<html>
+<head>
+    <title>Employees Table</title>
+    <style>
+
+        table {
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<?php
+$servername = "localhost";
+$username = "HEMANTH";
+$password = "H@12345";
+$dbname = "HEMANTH";
+ 
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+   die("connection failed: " . $conn->connect_error);
+}
+else{
+   echo " HEMANTH , you have connected to the server <br>";
+}
+
+$sql = "SELECT * FROM employees";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0){
+   echo "<table>";
+   echo "<tr><th> ID </th><th> FIRST NAME </th><th> LAST NAME </th><th> DESIGNATION </th></tr>";
+   while($row = $result->fetch_assoc()){
+         echo "<tr><td>".$row["ID"]."</td><td>".$row["first_name"]."</td><td>".$row["last_name"]."</td><td>".$row["designation"]."</td></tr>";
+   }
+   echo "</table>";
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+?>
+
+</body>
+</html>
