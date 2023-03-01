@@ -6,6 +6,7 @@
 
         table {
             margin: 0 auto;
+            background-color:blue;
         }
         .table-box {
             border: 1px solid black;
