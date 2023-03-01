@@ -7,6 +7,19 @@
         table {
             margin: 0 auto;
         }
+        .table-box {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+}
+        td,th {
+             padding: 5px;
+             border: 1px solid black;
+}             
     </style>
 </head>
 <body>
@@ -30,18 +43,21 @@ $sql = "SELECT * FROM employees";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0){
+   echo "<div class='table-box'>";
    echo "<table>";
    echo "<tr><th> ID </th><th> FIRST NAME </th><th> LAST NAME </th><th> DESIGNATION </th></tr>";
    while($row = $result->fetch_assoc()){
          echo "<tr><td>".$row["ID"]."</td><td>".$row["first_name"]."</td><td>".$row["last_name"]."</td><td>".$row["designation"]."</td></tr>";
    }
    echo "</table>";
+   echo "</div>";
 } else {
     echo "0 results";
 }
 
 $conn->close();
 ?>
+
 
 </body>
 </html>
